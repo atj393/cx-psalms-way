@@ -1,63 +1,108 @@
-document.getElementById("btnChapter").addEventListener("click", function () {
-  main();
-});
+// Define the range of chapters available and the path to the data file
+const CHAPTER_RANGE = { min: 0, max: 149 };
+const DATA_FILE_PATH = "psalms.json";
 
-document.getElementById("btnVerse").addEventListener("click", function () {
-  main(true);
-});
-
-function main(isVerse = false) {
-  var min = 1; // Minimum value for the random number
-  var max = 150; // Maximum value for the random number
-
-  // Generate a random number between the minimum and maximum values
-  var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  // Read the local JSON file
-  fetch("psalms.json")
-    .then((response) => response.json())
-    .then((data) => {
-      // Get the value corresponding to the random number from the JSON data
-      var value = data[randomNumber];
-
-      // Select the parent element where the list will be created
-      const contentSection = document.getElementById("contentElement"); // Replace with the actual ID of your parent element
-      const content = document.createElement("div"); // Replace with the
-      const ul = document.createElement("ul");
-      const p = document.createElement("p");
-
-      const title = document.createElement("h3");
-      title.textContent = `Psalms ${++randomNumber}`;
-      content.appendChild(title);
-
-      if (isVerse) {
-        var wordNumber =
-          Math.floor(Math.random() * (value.length - 1 - 0 + 1)) + 0;
-        p.textContent = value[wordNumber];
-        title.textContent = title.textContent + ":" + ++wordNumber;
-        content.appendChild(title);
-        content.appendChild(p);
-      } else {
-        // Create an unordered list element
-        // Use forEach to loop through the data array and create list items
-        value.forEach((item) => {
-          // Create a list item element
-          const li = document.createElement("li");
-
-          // Set the text content of the list item to the current item in the data array
-          li.textContent = item;
-
-          // Append the list item to the unordered list
-          ul.appendChild(li);
-          content.appendChild(ul);
-        });
-      }
-
-      // Append the unordered list to the parent element
-      // parentElement.replaceChildren();
-      contentSection.replaceChildren(content);
-    })
-    .catch((error) => console.error("Error fetching JSON:", error));
+// This function fetches data from a given file path and returns it as JSON
+async function fetchData(filePath) {
+  try {
+    // Fetch the data from the file
+    const response = await fetch(filePath);
+    // Parse the data as JSON and return it
+    return await response.json();
+  } catch (error) {
+    // Log any errors that occur during fetching or parsing
+    console.error("Error fetching JSON:", error);
+    return null;
+  }
 }
 
-main();
+// This function updates the content displayed on the page
+async function updateContent(isVerse = false, chapterIndex = getRandomChapterIndex()) {
+  console.log("--->   chapterIndex:", chapterIndex)
+  // Fetch the data from the file
+  const data = await fetchData(DATA_FILE_PATH);
+  // If no data was fetched, stop execution of the function
+  if (!data) return;
+
+  // Get the content for the selected chapter
+  const chapterContent = data[chapterIndex];
+
+  // Update the current chapter
+  currentChapter = chapterIndex;
+  // Define the chapter title based on the chapter index
+  let chapterTitle = `Psalms ${chapterIndex + 1}`;
+  // Create a new div for the content
+  const contentDiv = document.createElement("div");
+  // If displaying a verse, create a p element and append it to the div
+  if (isVerse) {
+    // Create a p element for the verse text
+    const verse = document.createElement("p");
+    // Get a random verse index and set the verse text
+    const verseIndex = getRandomVerseIndex(chapterContent);
+    // Update the chapter title to include the verse number
+    chapterTitle = `${chapterTitle}:${verseIndex + 1}`;
+    verse.textContent = chapterContent[verseIndex];
+    contentDiv.appendChild(verse);
+  } else {
+    // If displaying a chapter, create a ul element and append li elements for each verse
+    const ul = document.createElement("ul");
+    chapterContent.forEach(verseText => {
+      const li = document.createElement("li");
+      li.textContent = verseText;
+      ul.appendChild(li);
+    });
+    contentDiv.appendChild(ul);
+  }
+
+    // Update the chapter title and reset the input field
+    document.getElementById("chapterTitle").textContent = chapterTitle;
+    document.getElementById("txtChapter").value = "";
+
+  // Replace the existing content with the new content
+  const contentSection = document.getElementById("contentElement");
+  if (contentSection) contentSection.replaceChildren(contentDiv);
+}
+
+// These functions return a random index for a chapter or verse
+function getRandomChapterIndex() {
+  return Math.floor(Math.random() * (CHAPTER_RANGE.max - CHAPTER_RANGE.min + 1)) + CHAPTER_RANGE.min;
+}
+
+function getRandomVerseIndex(chapterContent) {
+  return Math.floor(Math.random() * chapterContent.length);
+}
+
+// This function sets up event listeners for the UI elements
+function initializeEventListeners() {
+  // Update the content when the chapter or verse buttons are clicked
+  document.getElementById("btnChapter").addEventListener("click", () => updateContent());
+  document.getElementById("btnVerse").addEventListener("click", () => updateContent(true));
+  // Update the content and current chapter when the prev or next buttons are clicked
+  document.getElementById("btnPrev").addEventListener("click", () => {
+    currentChapter = currentChapter === CHAPTER_RANGE.min ? CHAPTER_RANGE.max : currentChapter - 1;
+    updateContent(false, currentChapter);
+  });
+  document.getElementById("btnNext").addEventListener("click", () => {
+    currentChapter = currentChapter === CHAPTER_RANGE.max ? CHAPTER_RANGE.min : currentChapter + 1;
+    updateContent(false, currentChapter);
+  });
+  // Update the content to a specific chapter when the go button is clicked
+  document.getElementById("btnGo").addEventListener("click", () => {
+    let chapterNum = parseInt(document.getElementById("txtChapter").value, 10) - 1;
+    if (!isNaN(chapterNum) && chapterNum >= CHAPTER_RANGE.min && chapterNum <= CHAPTER_RANGE.max) {
+      console.log("--->   chapterNum:", chapterNum)
+      updateContent(false, chapterNum);
+    } else {
+      alert("Please enter a valid chapter number between 1 and 150.");
+    }
+  });
+}
+
+// This variable keeps track of the current chapter
+let currentChapter = getRandomChapterIndex();
+
+// When the document is loaded, display a random chapter and set up the event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  updateContent();
+  initializeEventListeners();
+});

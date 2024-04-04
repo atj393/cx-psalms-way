@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Psalms Way! - Biblical Beginnings",
-  "version": "1.0",
-  "description": "A Biblical Pause Before New Beginnings, a powerful Chrome extension that brings the timeless wisdom of the Psalms to your fingertips",
+  "version": "1.1", 
+  "description": "A Biblical Pause Before New Beginnings, bringing the wisdom of the Psalms to your fingertips. Now with enhanced features!",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -15,5 +15,6 @@
       "48": "icon48.png",
       "128": "icon128.png"
     }
-  }
+  },
+  "permissions": []
 }
