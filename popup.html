@@ -1,30 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Psalms Way! - A Biblical Pause Before New Beginnings</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <section class="header">
-      <h3 class="title">Psalms Way!</h3>
-      <div class="button-group">
-        <button class="button" id="btnVerse">One Verse</button>
-        <button class="button" id="btnChapter">New Chapter</button>
-      </div>
-    </section>
-    <span class="divider"></span>
-    <section class="content" id="contentElement"></section>
-    <span class="divider"></span>
-    <section class="footer">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSda0j_4GX_E_aFhsyItJssbgRc6C7Ukg-No54Gc0Sivzt5iSA/viewform?usp=sf_link" target="blank"> Feedback </a>
-      <span> | </span>
-      <a href="https://www.facebook.com/atj393" target="blank"> Facebook </a>
-      <span> | </span>
-      <a href="https://www.linkedin.com/in/atj393/" target="blank"> LinkedIn </a>
-    </section>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psalms Way! - A Biblical Pause Before New Beginnings</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="title">Psalms Way!</h1>
+    <div>
+      <button class="button" id="btnVerse">One Verse</button>
+      <button class="button" id="btnChapter">New Chapter</button>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="sub-header">
+    <h2 class="chapter-title" id="chapterTitle">Psalms</h2>
+    <div>
+      <input type="text" id="txtChapter" class="input" placeholder="Chapter" />
+      <button class="button" type="button" id="btnGo">Go</button>
+      <span class="divider-vertical">|</span>
+      <button class="button" id="btnPrev">&lt;</button>
+      <button class="button" id="btnNext">&gt;</button>
+    </div>
   </section>
 
-    <!-- Add an element with an id to display the result -->
-    <script src="popup.js"></script>
-  </body>
+  <hr class="divider">
+
+  <main class="content" id="contentElement"></main>
+
+  <hr class="divider">
+
+  <footer class="footer">
+    <nav aria-label="Footer links">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSda0j_4GX_E_aFhsyItJssbgRc6C7Ukg-No54Gc0Sivzt5iSA/viewform?usp=sf_link" target="_blank" alt="Feedback Form"> Feedback </a>
+      <span> | </span>
+      <a href="https://github.com/atj393/cx-psalms-way" target="_blank" alt="Github Repository"> Github </a>
+      <span> | </span>
+      <a href="https://www.linkedin.com/in/atj393/" target="_blank" alt="LinkedIn Profile"> LinkedIn </a>
+    </nav>
+  </footer>
+
+  <script src="./popup.js"></script>
+</body>
+
 </html>
