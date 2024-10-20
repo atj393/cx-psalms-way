@@ -1,44 +1,55 @@
-# Psalms Way! - A Biblical Pause Before New Beginnings
+# Psalms Way!
 
-## Description
-"Psalms Way!" is a Chrome extension designed to bring the profound wisdom of the Psalms directly to your browser. Whether you're about to start a new task, seeking inspiration, or need a moment of reflection, this extension offers immediate access to the verses of the Psalms. It's a perfect companion for those moments when you seek guidance, comfort, or a reminder of the presence of grace in your life.
+**Psalms Way!** is a Chrome extension designed to bring the profound wisdom of the Psalms directly to your browser. Whether you're seeking inspiration, embarking on a new task, or simply need a moment of reflection, Psalms Way! offers immediate access to verses from the Psalms for spiritual guidance, comfort, and inspiration.
 
 ## Features
-- **One Verse:** Begin your day, work, or any task with a verse from the Psalms, chosen to uplift and inspire. Each verse is selected to provide encouragement and insight, helping you face life's challenges with grace and wisdom.
 
-- **New Chapter:** Engage with the Psalms more deeply by reading an entire chapter. Experience the richness of these ancient texts, which encompass the full range of human emotions—from joy and gratitude to sorrow and seeking.
+- **One Verse**: Start your day or task with a verse from the Psalms, chosen to uplift and inspire.
+- **New Chapter**: Engage with entire chapters of Psalms, experiencing the richness of these timeless texts.
+- **Offline Access**: Enjoy access to the Psalms without needing an internet connection, making spiritual guidance available anytime, anywhere.
 
-- **Offline Access:** No stable internet connection? No problem. "Psalms Way!" is designed to offer spiritual guidance anytime, anywhere, without the need for an internet connection.
+## Technical Overview
 
-## Technical Aspects
-This Chrome extension utilizes HTML, CSS, and JavaScript to deliver a simple yet impactful user interface. Key technical features include:
+Psalms Way! is built with:
 
-- **Async Data Fetching:** Leveraging modern JavaScript async/await syntax for efficient data fetching and rendering of Psalms content.
-- **Responsive Design:** Crafted with a responsive design in CSS, ensuring a seamless experience across various screen sizes and devices.
-- **Dynamic Content Generation:** Dynamically generates UI components based on user interactions, providing a fresh and personalized experience with each use.
+- **HTML, CSS, JavaScript**: Frontend technologies for a clean, efficient user interface.
+- **Async Data Fetching**: Utilizes modern JavaScript async/await syntax for efficient data fetching and rendering.
+- **Responsive Design**: Ensures a seamless experience across various screen sizes and devices.
 
-## Development and Testing Locally
-To develop and test "Psalms Way!" locally, follow these steps:
+## Development and Testing
 
-1. **Clone the Repository:** Start by cloning the repository to your local machine.
-    ```bash
-    git clone <repository-url>
-    ```
-2. **Load the Extension into Chrome:**
-    - Navigate to `chrome://extensions/` in your Chrome browser.
-    - Enable "Developer mode" at the top right.
-    - Click "Load unpacked" and select the directory where you cloned the repository.
+### Steps to test the extension locally:
 
-3. **Testing:**
-    - Once loaded, click on the extension icon in the browser toolbar to launch "Psalms Way!".
-    - Test the features such as "One Verse", "New Chapter", and navigation buttons.
+1. **Clone the repository**:
+   ```
+   git clone https://github.com/your-username/cx-psalms-way.git
+   ```
 
-4. **Develop:**
-    - Make changes to the HTML, CSS, or JavaScript files as needed.
-    - Refresh the extension from the `chrome://extensions/` page to see your changes.
+2. **Load the extension into Chrome**:
+   - Open Chrome and navigate to `chrome://extensions/`.
+   - Enable **Developer mode** in the top right.
+   - Click **Load unpacked** and select the directory where the repository was cloned.
 
-## Contribute
-Contributions to "Psalms Way!" are welcome! Whether it's feature suggestions, bug reports, or code contributions, please feel free to reach out or submit a pull request.
+3. **Launch the Extension**: Click on the Psalms Way! icon in your browser's toolbar to see the extension in action.
+
+### Testing Features:
+
+- **One Verse**: Check if a new verse is displayed every time you click the button.
+- **New Chapter**: Navigate through chapters and ensure they load correctly.
+- **Offline Access**: Test the extension by disconnecting from the internet to confirm it works offline.
+
+## Contributing
+
+Contributions are welcome! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
 
 ## License
-This project is licensed under MIT License. Feel free to use, modify, and distribute as you see fit.
+
+Psalms Way! is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as you see fit.
+
+## Feedback and Support
+
+We value your feedback! If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/atj393/cx-psalms-way/issues) or contact us through the repository.
+
+---
+
+**Psalms Way!** - A Biblical Pause Before New Beginnings.
