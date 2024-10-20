@@ -1,5 +1,5 @@
 # Psalms Way! - A Biblical Pause Before New Beginnings
-
+![Web Store](https://github.com/devkumar2313/Resume/blob/main/Screenshot%202024-10-21%20031813.png)
 ## Description
 "Psalms Way!" is a Chrome extension designed to bring the profound wisdom of the Psalms directly to your browser. Whether you're about to start a new task, seeking inspiration, or need a moment of reflection, this extension offers immediate access to the verses of the Psalms. It's a perfect companion for those moments when you seek guidance, comfort, or a reminder of the presence of grace in your life.
 
